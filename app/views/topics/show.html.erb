@@ -20,3 +20,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<% @topic.comments.each do |p| %>
+  <%= p.author %><br>
+  <%= p.created_at %><br>
+  <%= p.body %>
+  <hr>
+<% end %>
