@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  タイトル：<%= @topic.title %>
+</p>
+<p>
+  説明：<%= @topic.description %>
+</p>
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
