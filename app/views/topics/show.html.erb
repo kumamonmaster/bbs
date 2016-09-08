@@ -1,26 +1,28 @@
-<p id="notice"><%= notice %></p>
-<p>
-  タイトル：<%= @topic.title %>
-</p>
-<p>
-  説明：<%= @topic.description %>
-</p>
+<div class="notice">
+  <%= notice %>
+</div>
+<h1><%= @topic.title %></h1>
+<p><%= @topic.description %></p>
+
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
 
+<h1>Comment</h1>
 <%= form_for(@comment) do |f| %>
   <div class="form-group">
-    <%= f.label "名前" %>
+    <%= f.label :author %>
     <%= f.text_field :author, class: "form-control" %>
-
-    <%= f.label "本文" %>
-    <%= f.text_area :body, class: "form-control" %>
-
-    <%= f.hidden_field :topic_id, value: params[:id] %>
-    <%= f.submit %>
   </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :topic_id, value: params[:id] %>
+  <%= f.submit 'Create Comment', class: "btn btn-primary" %>
 <% end %>
 
+<h1>Comments List</h1>
 <% @topic.comments.each do |p| %>
   <%= p.author %><br>
   <%= p.created_at %><br>
